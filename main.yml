@@ -1,0 +1,26 @@
+---
+- hosts: localhost
+  connection: local
+
+  roles:
+    - role: ansible-sdkman
+      sdkman_user: melnichuk
+      sdkman_group: melnichuk
+      sdkman_install_packages:
+        - { candidate: java, version: 15.0.2.hs-adpt }
+      sdkman_defaults:
+        java: 15.0.2.hs-adpt
+
+  tasks:
+    - name: snap | intellij-idea-ultimate
+      snap:
+        name: intellij-idea-ultimate
+        classic: true
+    
+    - name: snap | obs-studio
+      snap:
+        name: obs-studio
+
+    - name: snap | chromium
+      snap:
+        name: chromium
