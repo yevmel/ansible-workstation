@@ -24,3 +24,8 @@
     - name: snap | chromium
       snap:
         name: chromium
+    
+    - name: Setup /etc/hosts
+      get_url:
+        url:  https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling/hosts
+        dest: /etc/hosts
