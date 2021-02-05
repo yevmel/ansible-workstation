@@ -20,3 +20,10 @@
     name: melnichuk
     groups: docker
     append: yes
+
+- name: Docker | install docker-compose
+  apt: 
+    update_cache: yes 
+    name: docker-compose
+    state: latest
+    

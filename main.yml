@@ -18,3 +18,22 @@
         creates: "/home/melnichuk/.nvm"
       become: yes
       become_user: melnichuk
+
+    - name: Install intellij-idea-ultimate
+      snap:
+        name: intellij-idea-ultimate
+        classic: true
+
+    - name: Install obs-studio
+      snap:
+        name: obs-studio
+
+    - name: Install chromium
+      snap:
+        name: chromium
+
+    - name: Install htop
+      apt: 
+        update_cache: yes 
+        name: htop
+        state: latest
