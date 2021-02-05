@@ -1,26 +1,22 @@
 ---
-- hosts: localhost
-  connection: local
+- name: Docker | add GPG apt key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
 
-  tasks:
-    - name: Docker | add GPG apt key
-      apt_key:
-        url: https://download.docker.com/linux/ubuntu/gpg
-        state: present
+- name: Docker | add Docker Repository
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_lsb.codename }} stable
+    state: present
 
-    - name: Docker | add Docker Repository
-      apt_repository:
-        repo: deb https://download.docker.com/linux/ubuntu {{ ansible_lsb.codename }} stable
-        state: present
+- name: Docker | install docker-ce
+  apt: 
+    update_cache: yes 
+    name: docker-ce
+    state: latest
 
-    - name: Docker | install docker-ce
-      apt: 
-        update_cache: yes 
-        name: docker-ce
-        state: latest
-
-    - name: Docker | add user to group
-      user:
-        name: melnichuk
-        groups: docker
-        append: yes
+- name: Docker | add user to group
+  user:
+    name: melnichuk
+    groups: docker
+    append: yes

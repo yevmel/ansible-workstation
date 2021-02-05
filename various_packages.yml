@@ -17,13 +17,4 @@
     update_cache: yes 
     name: htop
     state: latest
-
-- name: Setup /etc/hosts
-  get_url:
-    url:  https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling/hosts
-    dest: /etc/hosts
-
-- name: Install nvm
-  shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
-  become: yes
-  become_user: melnichuk
+    

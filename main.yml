@@ -2,24 +2,19 @@
 - hosts: localhost
   connection: local
 
-  roles:
-    - role: ansible-sdkman
-      sdkman_user: melnichuk
-      sdkman_group: melnichuk
-      sdkman_install_packages:
-        - { candidate: java, version: 15.0.2.hs-adpt }
-      sdkman_defaults:
-        java: 15.0.2.hs-adpt
-
   tasks:
     - import_tasks: various_packages.yml
+    - import_tasks: sdkman.yml
+    - import_tasks: docker.yml
 
     - name: Setup /etc/hosts
       get_url:
         url:  https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling/hosts
         dest: /etc/hosts
-    
+
     - name: Install nvm
-      shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+      shell: curl https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+      args:
+        creates: "/home/melnichuk/.nvm"
       become: yes
       become_user: melnichuk
