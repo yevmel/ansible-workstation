@@ -3,7 +3,6 @@
   connection: local
 
   tasks:
-    - import_tasks: various_packages.yml
     - import_tasks: sdkman.yml
     - import_tasks: docker.yml
 
@@ -15,9 +14,9 @@
     - name: Install nvm
       shell: curl https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
       args:
-        creates: "/home/melnichuk/.nvm"
+        creates: "/home/{{ WORKSTATION_USER }}/.nvm"
       become: yes
-      become_user: melnichuk
+      become_user: "{{ WORKSTATION_USER }}"
 
     - name: Install intellij-idea-ultimate
       snap:
@@ -33,7 +32,8 @@
         name: chromium
 
     - name: Install htop
-      apt: 
-        update_cache: yes 
+      apt:
+        update_cache: yes
         name: htop
         state: latest
+
