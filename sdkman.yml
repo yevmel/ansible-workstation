@@ -1,0 +1,19 @@
+---
+- name: Install sdkman
+  shell: curl "https://get.sdkman.io" | bash
+  args:
+    creates: "/home/{{ WORKSTATION_USER }}/.sdkman"
+  become: yes
+  become_user: "{{ WORKSTATION_USER }}"
+
+- name: Install sdkman candidates (Java, Maven, Gradle, etc.)
+  shell: . /home/{{ WORKSTATION_USER }}/.sdkman/bin/sdkman-init.sh && sdk install {{ item.pkg }} {{ item.candidate }}
+  args:
+    executable: /bin/bash
+    creates: "/home/{{ WORKSTATION_USER }}/.sdkman/candidates/{{ item.pkg }}/{{ item.candidate }}"
+  become: yes
+  become_user: "{{ WORKSTATION_USER }}"
+  loop:
+    - { pkg: "java", candidate: "15.0.2.hs-adpt" }
+    - { pkg: "maven", candidate: "3.6.3" }
+    - { pkg: "gradle", candidate: "6.8.2" }

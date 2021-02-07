@@ -1,0 +1,38 @@
+---
+- hosts: localhost
+  connection: local
+
+  tasks:
+    - import_tasks: sdkman.yml
+    - import_tasks: docker.yml
+
+    - name: Setup /etc/hosts
+      get_url:
+        url:  https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling/hosts
+        dest: /etc/hosts
+
+    - name: Install nvm
+      shell: curl https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+      args:
+        creates: "/home/{{ WORKSTATION_USER }}/.nvm"
+      become: yes
+      become_user: "{{ WORKSTATION_USER }}"
+
+    - name: Install intellij-idea-ultimate
+      snap:
+        name: intellij-idea-ultimate
+        classic: true
+
+    - name: Install obs-studio
+      snap:
+        name: obs-studio
+
+    - name: Install chromium
+      snap:
+        name: chromium
+
+    - name: Install htop
+      apt: 
+        update_cache: yes 
+        name: htop
+        state: latest
