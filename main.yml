@@ -23,6 +23,11 @@
         name: intellij-idea-ultimate
         classic: true
 
+    - name: Install Visual Studio Code
+      snap:
+        name: code
+        classic: true
+
     - name: Install obs-studio
       snap:
         name: obs-studio
