@@ -18,27 +18,21 @@
       become: yes
       become_user: "{{ WORKSTATION_USER }}"
 
-    - name: Install intellij-idea-ultimate
+    - name: Install snaps
       snap:
-        name: intellij-idea-ultimate
-        classic: true
+        name: "{{ item.name }}"
+        classic: "{{ item.classic }}"
+      loop:
+        - { name: 'intellij-idea-ultimate', classic: true }
+        - { name: 'code', classic: true }
+        - { name: 'obs-studio', classic: false }
+        - { name: 'chromium', classic: false }
 
-    - name: Install Visual Studio Code
-      snap:
-        name: code
-        classic: true
-
-    - name: Install obs-studio
-      snap:
-        name: obs-studio
-
-    - name: Install chromium
-      snap:
-        name: chromium
-
-    - name: Install htop
+    - name: Install packages
       apt:
         update_cache: yes
-        name: htop
+        name: "{{ item }}"
         state: latest
-
+      loop:
+        - htop
+        - timeshift

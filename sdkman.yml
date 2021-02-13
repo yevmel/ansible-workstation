@@ -23,4 +23,3 @@
     - { pkg: "java", candidate: "15.0.2.hs-adpt" }
     - { pkg: "maven", candidate: "3.6.3" }
     - { pkg: "gradle", candidate: "6.8.2" }
-
