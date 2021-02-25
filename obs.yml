@@ -1,0 +1,11 @@
+---
+- name: add ppa for obs-studios
+  apt_repository:
+    repo: 'ppa:obsproject/obs-studio'
+    state: present
+
+- name: install obs-studio
+  apt:
+    update_cache: yes
+    name: obs-studio
+    state: latest

@@ -5,6 +5,7 @@
   tasks:
     - import_tasks: sdkman.yml
     - import_tasks: docker.yml
+    - import_tasks: obs.yml
 
     - name: Setup /etc/hosts
       get_url:
@@ -25,7 +26,6 @@
       loop:
         - { name: 'intellij-idea-ultimate', classic: true }
         - { name: 'code', classic: true }
-        - { name: 'obs-studio', classic: false }
         - { name: 'chromium', classic: false }
 
     - name: Install packages
