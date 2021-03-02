@@ -1,0 +1,12 @@
+---
+- name: Wireshark | install
+  apt:
+    update_cache: yes
+    name: wireshark
+    state: latest
+
+- name: Wireshark | add user to group
+  user:
+    name: "{{ WORKSTATION_USER }}"
+    groups: wireshark
+    append: yes

@@ -6,6 +6,7 @@
     - import_tasks: sdkman.yml
     - import_tasks: docker.yml
     - import_tasks: obs.yml
+    - import_tasks: wireshark.yml
 
     - name: Setup /etc/hosts
       get_url:
