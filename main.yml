@@ -28,6 +28,7 @@
         - { name: 'intellij-idea-ultimate', classic: true }
         - { name: 'code', classic: true }
         - { name: 'chromium', classic: false }
+        - { name: 'postman', classic: false}
 
     - name: Install packages
       apt:
