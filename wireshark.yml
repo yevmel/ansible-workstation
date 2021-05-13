@@ -1,8 +1,7 @@
 ---
 - name: Wireshark | install
-  apt:
-    update_cache: yes
-    name: wireshark
+  zypper:
+    name: wireshark-ui-qt
     state: latest
 
 - name: Wireshark | add user to group

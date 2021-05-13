@@ -1,7 +1,6 @@
 ---
 - name: Install curl
-  apt:
-    update_cache: yes
+  zypper:
     name: curl
     state: latest
 
