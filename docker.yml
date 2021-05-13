@@ -1,0 +1,11 @@
+---
+- name: Docker | install
+  zypper:
+    name: wireshark-ui-qt
+    state: latest
+
+- name: Docker | enable service
+  systemd:
+    name: docker
+    state: started
+    enabled: yes
