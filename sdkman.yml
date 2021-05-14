@@ -1,8 +1,11 @@
 ---
 - name: Install curl
   zypper:
-    name: curl
+    name: "{{ item }}"
     state: latest
+  loop:
+   - curl
+   - zip
 
 - name: Install sdkman
   shell: curl "https://get.sdkman.io" | bash
