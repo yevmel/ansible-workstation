@@ -1,8 +1,0 @@
----
-- name: Install IDEA
-  shell: mkdir -p "/home/{{ WORKSTATION_USER }}/Work/idea" && curl -o - -L "https://download.jetbrains.com/product?code=PS&latest&distribution=linux" | tar zx --strip-components 1 -C "/home/{{ WORKSTATION_USER }}/Work/idea"
-  args:
-    creates: "/home/{{ WORKSTATION_USER }}/Work/idea"
-  become: yes
-  become_user: "{{ WORKSTATION_USER }}"
-

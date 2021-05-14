@@ -1,3 +1,1 @@
-# setup workstation
-
-    sudo ansible-playbook -e "WORKSTATION_USER=$USER" main.yml
+checkout `ubuntu` or `opensuse` branch.
