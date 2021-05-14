@@ -7,6 +7,7 @@
     - import_tasks: docker.yml
     - import_tasks: obs.yml
     - import_tasks: wireshark.yml
+    - import_tasks: idea.yml
 
     - name: Setup /etc/hosts
       get_url:
@@ -25,7 +26,6 @@
         name: "{{ item.name }}"
         classic: "{{ item.classic }}"
       loop:
-        - { name: 'intellij-idea-ultimate', classic: true }
         - { name: 'code', classic: true }
         - { name: 'chromium', classic: false }
         - { name: 'postman', classic: false}
