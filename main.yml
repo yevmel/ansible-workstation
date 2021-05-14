@@ -3,9 +3,10 @@
   connection: local
 
   tasks:
-    - import_tasks: sdkman.yml
     - import_tasks: wireshark.yml
+    - import_tasks: sdkman.yml
     - import_tasks: docker.yml
+    - import_tasks: idea.yml
 
     - name: Setup /etc/hosts
       get_url:
@@ -28,4 +29,4 @@
         - chromium
         - obs-studio
 
-# TODO: intellij, code, postman
+# TODO: code, postman
