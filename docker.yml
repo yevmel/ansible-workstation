@@ -1,7 +1,7 @@
 ---
 - name: Docker | install
   zypper:
-    name: wireshark-ui-qt
+    name: docker
     state: latest
 
 - name: Docker | enable service
