@@ -3,11 +3,16 @@
   connection: local
 
   tasks:
-    - import_tasks: wireshark.yml
-    - import_tasks: sdkman.yml
-    - import_tasks: docker.yml
-    - import_tasks: idea.yml
-    - import_tasks: packman-repo.yml
+    - name: Install packages
+      zypper:
+        name: "{{ item }}"
+        state: latest
+      loop:
+        - zip
+        - curl
+        - htop
+        - chromium
+        - obs-studio
 
     - name: Setup /etc/hosts
       get_url:
@@ -21,20 +26,17 @@
       become: yes
       become_user: "{{ WORKSTATION_USER }}"
 
-    - name: Install packages
-      zypper:
-        name: "{{ item }}"
-        state: latest
-      loop:
-        - htop
-        - chromium
-        - obs-studio
-
     - name: Install zoom
       zypper:
         name: https://zoom.us/client/latest/zoom_openSUSE_x86_64.rpm
         state: present
         disable_gpg_check: yes
+
+    - import_tasks: wireshark.yml
+    - import_tasks: sdkman.yml
+    - import_tasks: docker.yml
+    - import_tasks: idea.yml
+    - import_tasks: packman-repo.yml
 
 # TODO: code, postman
 
