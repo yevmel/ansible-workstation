@@ -1,0 +1,6 @@
+---
+- name: Add Packman Repository
+  zypper_repository:
+    name: Packman Repository
+    repo: https://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed/
+

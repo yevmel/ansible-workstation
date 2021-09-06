@@ -7,6 +7,7 @@
     - import_tasks: sdkman.yml
     - import_tasks: docker.yml
     - import_tasks: idea.yml
+    - import_tasks: packman-repo.yml
 
     - name: Setup /etc/hosts
       get_url:
