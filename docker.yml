@@ -1,8 +1,11 @@
 ---
 - name: Docker | install
   zypper:
-    name: docker
+    name: "{{ item }}"
     state: latest
+  loop:
+    - docker
+    - docker-bash-completion
 
 - name: Docker | enable service
   systemd:
